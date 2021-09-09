@@ -1,9 +1,6 @@
 name: Comment response
 
-on:
-  issue_comment:
-    types:
-      - created
+on: issue_comment
 
 jobs:
   build:
