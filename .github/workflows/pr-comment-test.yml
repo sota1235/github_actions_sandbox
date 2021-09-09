@@ -1,9 +1,6 @@
-name: Main
+name: Comment response
 
 on:
-  push:
-    paths:
-      - 'assets/*'
   issue_comment:
     types:
       - created
@@ -13,17 +10,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-
+      - id: echo
+        uses: actions/echo
+        with:
+          word: github.event.comment.body
       - uses: actions/github-script@0.8.0
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            console.log(context)
-            /**
             github.issues.createComment({
               issue_number: context.payload.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: 'pong'
+              body: ${{ steps.echo.outputs.word }}
             })
-            */
