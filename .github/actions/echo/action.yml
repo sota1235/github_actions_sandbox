@@ -1,0 +1,16 @@
+name: echo
+description: echo
+inputs:
+  word:
+    description: Word to echo
+    required: true
+outputs:
+  word:
+    description: Result
+    value: ${{ steps.generate-word.outputs.word }}
+runs:
+  using: "composite"
+  steps:
+    - id: generate-word
+      run: echo "::set-output name=word::hello, ${{ inputs.word }}"
+      shell: bash
