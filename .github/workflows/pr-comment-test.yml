@@ -10,7 +10,7 @@ jobs:
       - id: echo
         uses: ./.github/actions/echo
         with:
-          word: github.event.comment.body
+          word: ${{ github.event.comment.body }}
       - uses: actions/github-script@0.8.0
         env:
           BODY: ${{ steps.echo.outputs.word }}
