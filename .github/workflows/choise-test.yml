@@ -1,0 +1,23 @@
+name: Choise test
+
+on:
+  workflow_dispatch:
+    inputs:
+      free_text:
+        description: Free text
+        required: true
+        default: Free text
+      type:
+        description: type
+        required: true
+        options:
+          - development
+          - production
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+        echo "Free text: ${{ github.event.inputs.free_text }}"
+        echo "type: ${{ github.event.inputs.type }}"
