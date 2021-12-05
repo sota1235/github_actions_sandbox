@@ -8,11 +8,12 @@ on:
         required: true
         default: Free text
       type:
+        type: choice
         description: type
         required: true
         options:
-        - development
-        - production
+          - development
+          - production
 
 jobs:
   test:
