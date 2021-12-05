@@ -11,8 +11,8 @@ on:
         description: type
         required: true
         options:
-          - development
-          - production
+        - development
+        - production
 
 jobs:
   test:
