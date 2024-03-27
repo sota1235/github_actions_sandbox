@@ -14,4 +14,4 @@ runs:
       run: |
         envsubst < "$INPUT_PATH" > tmp
         mv tmp "$OUTPUT_PATH"
-        echo "$OUTPUT_PATH"
+        cat "$OUTPUT_PATH"
