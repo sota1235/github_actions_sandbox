@@ -1,0 +1,17 @@
+name: using envsubst test
+description: 'Test for using envsubst'
+
+runs:
+  using: 'composite'
+
+  steps:
+    - name: Use envsubst
+      shell: bash
+      env:
+        INPUT_PATH: ${{ github.workspace }}/assets/test_envsubst
+        OUTPUT_PATH: ${{ github.workspace }}/assets/test_envsubst_result
+        VARIABLE: "test-value"
+      run: |
+        envsubst < "$INPUT_PATH" > tmp
+        mv tmp "$OUTPUT_PATH"
+        echo "$OUTPUT_PATH"
