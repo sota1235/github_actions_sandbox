@@ -1,0 +1,11 @@
+name: Reusable workflow(Just only running checkout)
+
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions: {}
+    steps:
+      - uses: ./.github/workflows/reusable_workflow.yml
