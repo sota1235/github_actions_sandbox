@@ -1,7 +1,7 @@
 name: Calling envsubst on composite action test
 
 on:
-  push:
+  workflow_dispatch:
 
 jobs:
   build:
