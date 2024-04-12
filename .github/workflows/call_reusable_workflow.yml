@@ -1,4 +1,4 @@
-name: Reusable workflow(Just only running checkout)
+name: Calling reusable workflow
 
 on:
   push:
