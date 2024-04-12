@@ -5,9 +5,6 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
     permissions:
       contents: read
-    steps:
-      - uses: actions/checkout@v4
-      - uses: ./.github/workflows/reusable_workflow.yml
+    uses: ./.github/workflows/reusable_workflow.yml
