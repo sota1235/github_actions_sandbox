@@ -1,0 +1,23 @@
+name: Choise test
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v2
+      - uses: technote-space/get-diff-action@v6
+        with:
+          PATTERNS: |
+            *
+      - name: dump
+        env:
+          EVENT: ${{ github.event_name }}
+        run: |
+          echo "${EVENT}"
+          echo "${GIT_DIFF}"
