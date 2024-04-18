@@ -1,4 +1,4 @@
-name: Choise test
+name: Test diff action
 
 on:
   push:
