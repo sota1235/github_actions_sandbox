@@ -1,0 +1,22 @@
+name: Calling git-pr-release
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@97e35c5302afcf3f5ac1df3fca9343d32536b286 # 1.184.0
+        with:
+          ruby-version: 3.3
+      - name: Install git-pr-release
+        run: gem install --no-document git-pr-release
+      - name: Run git-pr-release
+        run: git-pr-release
+        env:
+          TZ: "Asia/Tokyo"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GIT_PR_RELEASE_BRANCH_PRODUCTION: main
+          GIT_PR_RELEASE_LABELS: release
