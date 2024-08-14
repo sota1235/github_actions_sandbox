@@ -6,12 +6,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5 # v2.7.0
       - id: echo
         uses: ./.github/actions/echo
         with:
           word: ${{ github.event.comment.body }}
-      - uses: actions/github-script@0.8.0
+      - uses: actions/github-script@80a5e943b446817466ff17e8b61cb80848641ed6 # 0.8.0
         env:
           BODY: ${{ steps.echo.outputs.word }}
         with:
