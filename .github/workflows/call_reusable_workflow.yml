@@ -2,6 +2,8 @@ name: Calling reusable workflow
 
 on:
   push:
+    branches:
+      - develop
 
 jobs:
   build:

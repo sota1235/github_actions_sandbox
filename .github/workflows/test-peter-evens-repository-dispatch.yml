@@ -18,3 +18,4 @@ jobs:
           token: ${{ steps.app-token.outputs.token }}
           repository: sota1235/github_actions_sandbox
           event-type: test_result
+          client-payload: '{"passed": false, "message": "This is a failure message"}'
