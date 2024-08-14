@@ -18,7 +18,8 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - run: |
-        echo "Free text: ${{ github.event.inputs.free_text }}"
-        echo "type: ${{ github.event.inputs.type }}"
+          echo "Free text: ${{ github.event.inputs.free_text }}"
+          echo "type: ${{ github.event.inputs.type }}"
