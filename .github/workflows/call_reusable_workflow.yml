@@ -4,6 +4,12 @@ on:
   push:
     branches:
       - develop
+  workflow_dispatch:
+    inputs:
+      bool_value:
+        description: 'Boolean value'
+        required: true
+        type: boolean
 
 jobs:
   build:
@@ -11,3 +17,5 @@ jobs:
       contents: read
       pull-requests: read
     uses: ./.github/workflows/reusable_workflow.yml
+    with:
+      bool_value: ${{ inputs.bool_value }}

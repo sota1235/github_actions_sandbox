@@ -2,6 +2,11 @@ name: Reusable workflow(Just only running checkout)
 
 on:
   workflow_call:
+    inputs:
+      bool_value:
+        description: 'Boolean value'
+        required: true
+        type: boolean
 
 jobs:
   build:
@@ -14,4 +19,10 @@ jobs:
       - run: gh pr list
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+      - name: Print bool_value
+        env:
+          BOOL_VALUE: ${{ inputs.bool_value }}
+        run: echo "$BOOL_VALUE"
+      - name: Proceed if bool_value is true
+        if: ${{ inputs.bool_value == true }}
+        run: echo "bool_value is true"
