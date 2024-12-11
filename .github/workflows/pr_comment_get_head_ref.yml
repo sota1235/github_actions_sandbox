@@ -1,0 +1,24 @@
+name: Get head_ref on PR comment
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  get_pr_head_ref:
+    name: prepare
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
+    timeout-minutes: 3
+    if: github.event.issue.pull_request != null # ①
+    steps:
+      - name: Get PR head ref
+        id: pr_head_ref
+        env:
+          PR_NUMBER: ${{ github.event.issue.number }} # ②
+        run: |
+          # ③
+          pr_head_ref=$(gh pr view "$PR_NUMBER" --json headRefName --jq .headRefName) 
+          echo $pr_head_ref
