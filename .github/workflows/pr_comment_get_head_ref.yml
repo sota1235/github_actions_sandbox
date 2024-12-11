@@ -17,9 +17,10 @@ jobs:
       - name: Get PR head ref
         id: pr_head_ref
         env:
+          REPO_NAME: ${{ github.repository }}
           PR_NUMBER: ${{ github.event.issue.number }} # ②
           GH_TOKEN: ${{ github.token }}
         run: |
           # ③
-          pr_head_ref=$(gh pr view "$PR_NUMBER" --json headRefName --jq .headRefName)
+          pr_head_ref=$(gh pr view "$PR_NUMBER" -R "$REPO_NAME" --json headRefName --jq .headRefName)
           echo $pr_head_ref
