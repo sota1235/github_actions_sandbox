@@ -1,0 +1,14 @@
+name: test overriding GITHUB_TOKEN
+
+on:
+  push:
+
+jobs:
+  test-workflow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Overriding GITHUB_TOKEN
+        env:
+          GITHUB_TOKEN: "some dummy"
+        run: |
+          echo "$GITHUB_TOKEN"
