@@ -10,5 +10,7 @@ jobs:
       - name: Overriding GITHUB_TOKEN
         env:
           GITHUB_TOKEN: "some dummy"
+          GITHUB_ACTION: "some dummy 2"
         run: |
           echo "$GITHUB_TOKEN"
+          echo "$GITHUB_ACTION"
